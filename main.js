@@ -16,6 +16,8 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+// Add OrbitControls
+const controls = new OrbitControls(camera, renderer.domElement);
 const geometry = new THREE.BoxGeometry(1, 1, 1); //for creating a cube or shape
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material); //is an object that takes geometry
@@ -28,6 +30,7 @@ camera.position.z = 5;
 function animate() {
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
+  controls.update(); // Update controls
   renderer.render(scene, camera);
 }
 renderer.setAnimationLoop(animate);
