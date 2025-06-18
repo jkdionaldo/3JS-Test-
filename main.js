@@ -1,9 +1,9 @@
-import * as Three from "three";
+import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-const controls = new OrbitControls(camera, renderer.domElement);
-const loader = new GLTFLoader();
+//the important part is the camera and we needed to set this up
+//Creating the scene
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -13,12 +13,21 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSSize(window.innerWidth, window.innerHeight);
+renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshbasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
+const geometry = new THREE.BoxGeometry(1, 1, 1); //for creating a cube or shape
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material); //is an object that takes geometry
 scene.add(cube);
 
 camera.position.z = 5;
+
+//now for rendering part
+//animation loop
+function animate() {
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
+}
+renderer.setAnimationLoop(animate);
