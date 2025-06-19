@@ -1,0 +1,9 @@
+#info {
+  font-family: "Tomorrow", serif;
+  color: rgb(0, 0, 0);
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  font-weight: 800;
+  padding-top: 50px;
+}
